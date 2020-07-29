@@ -36,13 +36,14 @@ function generatePassword() {
   confirmSpecial = confirm("Select 'OK' if you would like special characters in your password")
   confirmNum = confirm("Select 'OK' if you would like numbers in your password")
 
+  for (var i = 0; i < length; i++) {
   if (length < 8 || length > 128) {
     alert("Password length must be at least 8 characters and no more than 128 characters")
   }
   else {
 
 
-    for (var i = 0; i < length; i++) {
+    
 
       if (confirmNum === true) {
 
@@ -50,7 +51,7 @@ function generatePassword() {
         var num = Math.floor(Math.random() * 10) + 1;
         console.log(num);
         newPass = [num]
-        NewPass++
+        
 
 
 
@@ -73,7 +74,7 @@ function generatePassword() {
         var upper = uppercase[Math.floor(Math.random() * uppercase.length)];
         console.log(upper);
         newUpper = [upper];
-        NewUpper++
+        
       }
 
 
@@ -84,7 +85,7 @@ function generatePassword() {
       if (confirmSpecial === true) {
         var special = specialchar[Math.floor(Math.random() * specialchar.length)];
         newSpecial = [special]
-        newSpecial++
+        
       }
       else {
         newSpecial = ""
