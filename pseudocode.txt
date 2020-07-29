@@ -1,0 +1,21 @@
+if special{
+calculate one character, add to the password 
+concatenate the totalarray with the special array
+}
+if lower{
+calculate one character, add to the password 
+concatenate the totalarray with the special array
+}
+if upper{
+calculate one character, add to the password 
+concatenate the totalarray with the special array
+}
+if numbers{
+calculate one character, add to the password 
+concatenate the totalarray with the special array
+}
+
+when you get here you have the password with 2 characters then you need to calculate 8 more
+loop and pick random characters from the totalarray
+
+return password
