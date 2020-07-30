@@ -16,89 +16,134 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-var specialchar = ["!", "@", "#", "$", "%", "^", "&", "*", "-", "+", "/", "?"]
+function generatePassword() { }
 
+//prompt user for length of password of at least 8 characters and no more than 128 characters
+let length = prompt("How many characters do you want your password to contain?")
+let confirmLower = confirm("Select 'OK' if you would like to lowercase letters in your passcode?")
+let confirmUpper = confirm("Select 'OK' if you would like uppercase letters in your passcode?")
+let confirmSpecial = confirm("Select 'OK' if you would like special characters in your passcode")
+let confirmNum = confirm("Selct 'OK' if you would like numbers in your passcode")
+var passcode=""
+var newNum=""
+var newUpper=""
+var newSpecial=""
+var newLow=""
 
+for (var i = 0; i < length; i++) {
 
-
-
-
-function generatePassword() {
-
-  //prompt user for length of password of at least 8 characters and no more than 128 characters
-  let length = prompt("How many characters do you want your password to contain?")
-
-  //confirm characters within password
-  confirmLower = confirm("Select 'OK' if you want lowercase letters in your password")
-  confirmUpper = confirm("Select 'OK' if you would like uppercase letters in your password")
-  confirmSpecial = confirm("Select 'OK' if you would like special characters in your password")
-  confirmNum = confirm("Select 'OK' if you would like numbers in your password")
-
-  for (var i = 0; i < length; i++) {
-  if (length < 8 || length > 128) {
+  
+  if (length <= 8 && length <= 128) {
     alert("Password length must be at least 8 characters and no more than 128 characters")
   }
   else {
-
+    
 
     
 
-      if (confirmNum === true) {
+    if (confirmNum === true) {
 
-        //select random integer 0-10
-        var num = Math.floor(Math.random() * 10) + 1;
-        console.log(num);
-        newPass = [num]
-        
+      getRandomNum()
 
 
 
-      }
+    } else {
+      newNum = ""
+    }
 
-      if (confirmLower === true) {
+    if (confirmLower === true) {
 
-        var lower = lowercase[Math.floor(Math.random() * lowercase.length)];
-        console.log(lower);
-        newLow = [lower]
-      }
-      else {
-        newLow = ""
-      }
-
-
-
-
-      if (confirmUpper === true) {
-        var upper = uppercase[Math.floor(Math.random() * uppercase.length)];
-        console.log(upper);
-        newUpper = [upper];
-        
-      }
-
-
-      else {
-        newUpper = ""
-      }
-
-      if (confirmSpecial === true) {
-        var special = specialchar[Math.floor(Math.random() * specialchar.length)];
-        newSpecial = [special]
-        
-      }
-      else {
-        newSpecial = ""
-      }
-
-
-      return passcode = newLow + newPass + newUpper + newSpecial
-
+      getRandomLower()
+    }
+    else {
+      newLow = ""
     }
 
 
 
+
+    if (confirmUpper === true) {
+      getRandomUpper()
+
+    }
+
+
+    else {
+      newUpper = ""
+    }
+
+    if (confirmSpecial === true) {
+      getRandomSpecial()
+
+    }
+    else {
+      newSpecial = ""
+    }
+
+
+
+
   }
+
+
+
+    
+  
+  
+  
+
+
+//Generate Random Special Characters
+function getRandomSpecial() {
+
+  var specialchars = '!@#$%^&*()-=+?<>/'
+  return specialchars[Math.floor(Math.random() * specialchars.length)];
+specialchars.push(passcode)
+
+
 }
 
-generatePasssword(passcode)
+
+//Generate Random Lowercase Characters
+function getRandomLower() {
+  var lowercaseChars = 'abcdefghijklmnopqrstuvwxyz'
+  return lowercaseChars[Math.floor(Math.random() * lowercaseChars.length)];
+  lowercaseChars.push(passcode)
+
+}
+
+//Generate Random Uppercase Characters
+function getRandomUpper() {
+  var uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  return uppercaseChars[Math.floor(Math.random() * uppercaseChars.length)];
+  uppercaseChars.push(passcode)
+  
+
+}
+
+//Generate Random Numeric Characters
+function getRandomNum() {
+  var numericChar = '0123456789'
+  return numericChar[Math.floor(Math.random() * numericChar.length)]
+  numericChar.push(passcode)
+  
+
+
+}
+
+
+//Validation Check of Functions 
+
+console.log(getRandomLower());
+console.log(getRandomSpecial());
+console.log(getRandomUpper());
+console.log(getRandomNum());
+console.log(passcode)
+}
+
+generatePassword(passcode)
+
+
+
+
+

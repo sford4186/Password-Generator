@@ -1,3 +1,16 @@
+
+When button is clicked...
+
+prompt user for how many characters they would like their password to contain
+
+prompt user if they would like special characters
+
+prompt user if they would like lowercase characters
+
+prompt user if they would like uppercase characters in their password
+
+prompt user if they would like numbers in their password
+
 if special{
 calculate one character, add to the password 
 concatenate the totalarray with the special array
@@ -19,3 +32,79 @@ when you get here you have the password with 2 characters then you need to calcu
 loop and pick random characters from the totalarray
 
 return password
+
+
+function generatePassword() {
+
+
+
+
+
+  
+  //confirm characters within password
+  confirmLower = confirm("Select 'OK' if you want lowercase letters in your password")
+  confirmUpper = confirm("Select 'OK' if you would like uppercase letters in your password")
+  confirmSpecial = confirm("Select 'OK' if you would like special characters in your password")
+  confirmNum = confirm("Select 'OK' if you would like numbers in your password")
+
+  for (var i = 0; i < length; i++) {
+  
+
+  if (length < 8 || length > 128) {
+    alert("Password length must be at least 8 characters and no more than 128 characters")
+  }
+  else {
+
+
+    
+
+      if (confirmNum === true) {
+
+        getRandomNum()
+       
+        
+
+
+
+      }
+
+      if (confirmLower === true) {
+
+        getRandomLower()
+      }
+      else {
+        newLow = ""
+      }
+
+
+
+
+      if (confirmUpper === true) {
+        getRandomUpper()
+        
+      }
+
+
+      else {
+        newUpper = ""
+      }
+
+      if (confirmSpecial === true) {
+        getRandomSpecial()
+        
+      }
+      else {
+        newSpecial = ""
+      }
+
+
+      return passcode = newLow + newPass + newUpper + newSpecial
+
+    }
+
+
+
+  }
+}
+
+generatePasssword(newPasscode)
