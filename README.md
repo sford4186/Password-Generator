@@ -1,2 +1,10 @@
-# Password-Generator
-application designed to generate a random password - homework 3
+# Password-Generator - Homework 3
+
+# Objective
+To create an application designed to generate a random password with exceptions 'confirmed' by the end user.
+
+# What Do I Plan to Accomplish
+
+1. Apply the random operator to generate a 'string' of characters
+2. Become more comfortable with using functions and arrays
+3. Grow in knowledge and application of Javascript
