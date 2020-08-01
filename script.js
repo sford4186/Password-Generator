@@ -2,72 +2,66 @@
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+function writePassword(password) {
+  console.log(password)
+  //var passcode = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
+  passwordText.value = password
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
-//prompt user for length of password of at least 8 characters and no more than 128 characters
+// Add event listener to generate button
+generateBtn.addEventListener("click", questions);
+
+
+function questions() {
+  let charactersToInclude =[]
+
+  //prompt user for length of password of at least 8 characters and no more than 128 characters
 let length = prompt("How many characters do you want your password to contain?")
 
-let confirmLower = confirm("Select 'OK' if you would like to lowercase letters in your passcode?")
-let confirmUpper = confirm("Select 'OK' if you would like uppercase letters in your passcode?")
-let confirmSpecial = confirm("Select 'OK' if you would like special characters in your passcode")
-let confirmNum = confirm("Selct 'OK' if you would like numbers in your passcode")
-var passcode = ""
+//Verify what characters the user would like to include in the code and call random functions
+
+if (confirm("Select 'OK' if you would like to lowercase letters in your passcode?")){
+  charactersToInclude.push(getRandomLower)
+}
+if(confirm("Select 'OK' if you would like uppercase letters in your passcode?")){
+  charactersToInclude.push(getRandomUpper)
+}
+if(confirm("Select 'OK' if you would like special characters in your passcode")){
+  charactersToInclude.push(getRandomSpecial)
+}
+if(confirm("Selct 'OK' if you would like numbers in your passcode")){
+  charactersToInclude.push(getRandomNum)
+}
+generatePassword(length, charactersToInclude)
+
+}
 
 
-function generatePassword() {
 
-
+//Generate passcode
+function generatePassword(length, charactersToInclude) {
+  var passcode=""
 
   if (length < 8 || length > 128) {
     alert("Try again. Password must be more than 8 characters and less than 128 characters")
-  } else {
-
+         
+  }    
 
     while (passcode.length < length) {
-
-      if (confirmNum === true) {
-        //Generate random number
-        var newNum = getRandomNum()
-      } else {
-        var newNum = ""
-      }
-      if (confirmLower === true) {
-        //generate random lowercase character
-        var newLow = getRandomLower()
-      }
-      else {
-        var newLow = ""
-      }   
-      if (confirmUpper === true) {
-        //generate random uppercase characters
-        var newUpper = getRandomUpper()
-      }
-      else {
-        var newUpper = ""
-      }
-      if (confirmSpecial === true) {
-        //generate random special character
-        var newSpecial = getRandomSpecial()
-      }
-      else {
-        var newSpecial = ""
-      }
+      
       //concatenate new generated characters in passcode array
-      passcode += newNum + newLow + newUpper + newSpecial;
+      passcode += charactersToInclude[Math.floor(Math.random()* charactersToInclude.length)]()
     }
-  }
-}
+    console.log(passcode)
+    writePassword(passcode)
 
+  }
+ 
+     
 //***********************************************************************/
 //Generator Functions//
 
@@ -109,8 +103,5 @@ function getRandomNum() {
 //console.log(getRandomNum());
 //console.log(passcode)
 
-generatePassword(passcode)
 
-var passwordText = document.querySelector("#password")
-passwordText.value = passcode.toString();
 
