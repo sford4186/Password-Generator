@@ -9,3 +9,5 @@ To create an application designed to generate a random password with exceptions 
 2. Become more comfortable with using functions and arrays
 3. Grow in knowledge and apply Javascript into the application
 4. Apply the usage of loops and conditional statements where needed.
+
+# Deployed Link: https://sford4186.github.io/Password-Generator/
